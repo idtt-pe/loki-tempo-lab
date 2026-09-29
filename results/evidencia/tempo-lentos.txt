@@ -1,0 +1,6 @@
+$ curl -sG localhost:3200/api/search --data-urlencode 'q={ name = "antifraud.check" && duration > 1s }' --data-urlencode limit=5 | jq -r '.traces[] | [.traceID, .rootServiceName, .rootTraceName, (.durationMs|tostring) + " ms"] | @tsv'
+bf474c347bdeb50a94027c595a88cf	command-api	POST /payments	1208 ms
+96d74aa4f55762a0aa30047353f8e	command-api	POST /payments	1204 ms
+1a240f01ea39ca8f2fc1fdbca17264c	command-api	POST /payments	1212 ms
+3347d9c9fda2aa480e8bc3876197cd2	command-api	POST /payments	1207 ms
+7a98451b6ad4dfed8d8dedcd2b5677	command-api	POST /payments	1206 ms

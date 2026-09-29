@@ -1,0 +1,4 @@
+$ curl -sG localhost:3100/loki/api/v1/query_range --data-urlencode 'query={service_name="command-api"} | json | route="/payments" | duration_ms > 1000' --data-urlencode limit=3 | jq -c '.data.result[].values[][1] | fromjson | {time, msg, route, status, duration_ms, trace_id}'
+{"time":"2026-09-29T15:49:25.130Z","msg":"request completed","route":"/payments","status":201,"duration_ms":1200.6,"trace_id":"3c48ee3060061846061546b4f19caf2f"}
+{"time":"2026-09-29T15:49:25.281Z","msg":"request completed","route":"/payments","status":201,"duration_ms":1203.1,"trace_id":"3bdc4afe619a74275efef2090ef8a063"}
+{"time":"2026-09-29T15:49:25.317Z","msg":"request completed","route":"/payments","status":201,"duration_ms":1204.1,"trace_id":"5b6755d288c07443f0d6d6462a8e1ca5"}

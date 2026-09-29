@@ -1,0 +1,6 @@
+$ tools/traza.py 272fcdba16312fb9cd6727f94a88b52
+trace 272fcdba16312fb9cd6727f94a88b52 · 3 spans · 3.1 ms
+  inicio   duración  servicio     span                                 barra
+     0.0       3.1ms  command-api  POST /payments                       xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+     0.0       3.0ms  command-api    antifraud.check                    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+     0.0       2.8ms  command-api      POST → antifraud                 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

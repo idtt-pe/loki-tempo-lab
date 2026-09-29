@@ -108,6 +108,8 @@ tools/bench.sh            # corre full, head10, tail y label, y escribe results/
 tools/run.sh tail         # o un solo modo
 ```
 
+Las salidas reales que aparecen como capturas en el estudio (consultas a Loki y Tempo, trazas dibujadas con `tools/traza.py`, el límite de streams y la cobertura con head sampling) las genera `tools/evidencia.sh` en `results/evidencia/`. Grafana queda en tema claro.
+
 ## Consultas útiles
 
 ```logql

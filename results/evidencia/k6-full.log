@@ -1,0 +1,55 @@
+time="2026-09-29T15:46:24Z" level=info msg="faults 2026-09-29T15:46:24.268Z {} -> 200" source=console
+time="2026-09-29T15:47:17Z" level=warning msg="The test has generated metrics with 100007 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details." component=metrics-engine-ingester
+time="2026-09-29T15:47:24Z" level=info msg="faults 2026-09-29T15:47:24.270Z {\"errorRate\":0.03} -> 200" source=console
+time="2026-09-29T15:48:14Z" level=warning msg="The test has generated metrics with 200001 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details." component=metrics-engine-ingester
+time="2026-09-29T15:48:24Z" level=info msg="faults 2026-09-29T15:48:24.268Z {\"slowAboveCents\":4500,\"slowMs\":1200} -> 200" source=console
+time="2026-09-29T15:49:24Z" level=info msg="faults 2026-09-29T15:49:24.268Z {} -> 200" source=console
+time="2026-09-29T15:50:21Z" level=warning msg="The test has generated metrics with 400043 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details." component=metrics-engine-ingester
+time="2026-09-29T15:50:24Z" level=error msg="failed to handle the end-of-test summary" error="Could not save some summary information:\n\t- could not open '/results/raw/evidencia-full/k6.json': open /results/raw/evidencia-full/k6.json: no such file or directory"
+{
+  "mode": "evidencia-full",
+  "config": {
+    "PAY": 100,
+    "STATEMENT": 200,
+    "DASHBOARD": 20,
+    "PHASE_MIN": 1,
+    "ERROR_RATE": 0.03,
+    "SLOW_ABOVE": 4500,
+    "SLOW_MS": 1200,
+    "HOT_WALLET": 777,
+    "HOT_SHARE": 0.005
+  },
+  "requests": 79206,
+  "droppedIterations": 0,
+  "endpoints": {
+    "pay": {
+      "count": 24001,
+      "p50": 4.691042,
+      "p95": 12.684666,
+      "p99": 1202.883,
+      "max": 1236.138126,
+      "failedRate": 0.009207949668763801
+    },
+    "topup": {
+      "count": 2400,
+      "p50": 1.7528955000000002,
+      "p95": 4.577862499999995,
+      "p99": 12.30669384,
+      "max": 158.936792
+    },
+    "statement": {
+      "count": 48001,
+      "p50": 0.827709,
+      "p95": 2.171,
+      "p99": 6.758583,
+      "max": 114.620584
+    },
+    "dashboard": {
+      "count": 4800,
+      "p50": 1.4065625000000002,
+      "p95": 3.5352350999999995,
+      "p99": 9.755718509999998,
+      "max": 125.830666
+    }
+  }
+}

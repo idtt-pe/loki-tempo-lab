@@ -1,0 +1,4 @@
+$ curl -sG localhost:3100/loki/api/v1/query_range --data-urlencode 'query={service_name="command-api", level="error"}' --data-urlencode limit=3 | jq -c '.data.result[].values[][1] | fromjson | {time, level, msg, wallet_id, antifraud_status, trace_id}'
+{"time":"2026-09-29T15:48:23.242Z","level":"error","msg":"antifraud rejected the check","wallet_id":190445,"antifraud_status":503,"trace_id":"b3321edd7d8a22910fef2582a9d52bb7"}
+{"time":"2026-09-29T15:48:23.781Z","level":"error","msg":"antifraud rejected the check","wallet_id":178539,"antifraud_status":503,"trace_id":"b7f3b3d286fc0b54402584e27aecab78"}
+{"time":"2026-09-29T15:48:23.142Z","level":"error","msg":"antifraud rejected the check","wallet_id":44777,"antifraud_status":503,"trace_id":"43f012b6367390dbd7e9314405e94bc8"}

@@ -1,0 +1,54 @@
+time="2026-09-29T16:01:26Z" level=info msg="faults 2026-09-29T16:01:26.649Z {} -> 200" source=console
+time="2026-09-29T16:01:56Z" level=info msg="faults 2026-09-29T16:01:56.645Z {\"errorRate\":0.03} -> 200" source=console
+time="2026-09-29T16:02:20Z" level=warning msg="The test has generated metrics with 100002 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details." component=metrics-engine-ingester
+time="2026-09-29T16:02:26Z" level=info msg="faults 2026-09-29T16:02:26.646Z {\"slowAboveCents\":4500,\"slowMs\":1200} -> 200" source=console
+time="2026-09-29T16:02:56Z" level=info msg="faults 2026-09-29T16:02:56.645Z {} -> 200" source=console
+time="2026-09-29T16:03:17Z" level=warning msg="The test has generated metrics with 200027 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details." component=metrics-engine-ingester
+{
+  "mode": "evidencia-head10",
+  "config": {
+    "PAY": 100,
+    "STATEMENT": 200,
+    "DASHBOARD": 20,
+    "PHASE_MIN": 0.5,
+    "ERROR_RATE": 0.03,
+    "SLOW_ABOVE": 4500,
+    "SLOW_MS": 1200,
+    "HOT_WALLET": 777,
+    "HOT_SHARE": 0.005
+  },
+  "requests": 39607,
+  "droppedIterations": 0,
+  "endpoints": {
+    "pay": {
+      "count": 12000,
+      "p50": 5.5446255,
+      "p95": 20.5167309,
+      "p99": 1203.37187358,
+      "max": 1315.932876,
+      "failedRate": 0.00875
+    },
+    "topup": {
+      "count": 1201,
+      "p50": 2.166583,
+      "p95": 6.98175,
+      "p99": 38.91975,
+      "max": 229.262792
+    },
+    "statement": {
+      "count": 24001,
+      "p50": 1.017916,
+      "p95": 2.429333,
+      "p99": 16.68375,
+      "max": 382.227834
+    },
+    "dashboard": {
+      "count": 2401,
+      "p50": 1.562792,
+      "p95": 3.919,
+      "p99": 25.121,
+      "max": 381.084208
+    }
+  }
+}
+time="2026-09-29T16:03:26Z" level=error msg="failed to handle the end-of-test summary" error="Could not save some summary information:\n\t- could not open '/results/raw/evidencia-head10/k6.json': open /results/raw/evidencia-head10/k6.json: no such file or directory"

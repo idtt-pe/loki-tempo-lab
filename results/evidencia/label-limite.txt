@@ -1,0 +1,2 @@
+$ docker compose logs loki | grep -m1 -o 'maximum active stream limit exceeded[^}]*}'
+maximum active stream limit exceeded when trying to create stream {level=\"info\", service_name=\"command-api\", trace_id=\"04842ac1a2a1c3a232fa93292afdf375\"}

@@ -1,0 +1,14 @@
+$ tools/traza.py 96d74aa4f55762a0aa30047353f8e
+trace 96d74aa4f55762a0aa30047353f8e · 11 spans · 1,204.0 ms
+  inicio   duración  servicio     span                                 barra
+     0.0    1201.3ms  command-api  POST /payments                       ███████████████████████████████████████
+     0.0    1200.0ms  command-api    antifraud.check                    ███████████████████████████████████████
+     0.0    1199.8ms  command-api      POST → antifraud                 ███████████████████████████████████████
+  1200.0       0.0ms  command-api    pg-pool.connect → write-db                                                █
+  1200.0       0.1ms  command-api    pg.query:BEGIN wallet → write-db                                          █
+  1200.0       0.2ms  command-api    pg.query:UPDATE wallet → write-db                                         █
+  1200.0       0.4ms  command-api    pg.query:INSERT wallet → write-db                                         █
+  1201.0       0.1ms  command-api    pg.query:INSERT wallet → write-db                                         █
+  1201.0       0.3ms  command-api    pg.query:COMMIT wallet → write-db                                         █
+  1202.0       0.2ms  projector      wallet-events publish                                                     █
+  1203.0       1.0ms  projector        wallet-events process                                                   █

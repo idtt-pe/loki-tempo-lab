@@ -1,0 +1,11 @@
+$ curl -sG localhost:3100/loki/api/v1/query_range --data-urlencode 'query={service_name="command-api", level="error"}' --data-urlencode limit=10 | jq -r '.data.result[].values[][1] | fromjson | .trace_id' | while read id; do printf '%s  %s spans\n' $id $(curl -s localhost:3200/api/v2/traces/$id | jq '[.trace.resourceSpans[]?.scopeSpans[]?.spans[]?] | length'); done
+ef4b257ba664269882339196d6e821e5  0 spans
+f7ec1077717feaf7b0ff326c00894982  0 spans
+b0e743334a76b07e849994fc8152f09f  0 spans
+b773051e8bd7b127556690d39838268d  0 spans
+a8fdc70330495a78de88308c87b054d2  0 spans
+201e71ec2a0d227dc40d439c2f9f5f83  0 spans
+e47e1b57ca27bf310a75d0480bb78997  0 spans
+906945c0ed25930a91ff25d92e82f6a4  0 spans
+bb326c6f28f12473757631cd7843ec4b  0 spans
+0c7fee721006f7d0b221bd5c051b614e  0 spans

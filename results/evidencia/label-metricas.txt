@@ -1,0 +1,4 @@
+$ curl -s localhost:3100/metrics | grep -E '^loki_(discarded_samples_total|ingester_memory_streams|ingester_streams_created_total)\{'
+loki_discarded_samples_total{format="",policy="",reason="stream_limit",retention_hours="0",tenant="fake"} 1024
+loki_ingester_memory_streams{tenant="fake"} 5000
+loki_ingester_streams_created_total{tenant="fake"} 5000

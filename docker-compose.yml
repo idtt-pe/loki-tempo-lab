@@ -168,6 +168,7 @@ services:
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
       GF_AUTH_DISABLE_LOGIN_FORM: "true"
       GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_USERS_DEFAULT_THEME: light
     volumes:
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
     ports: ["3000:3000"]
