@@ -1,0 +1,9 @@
+{
+  "name": "loki-tempo-lab",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.11.0",
+  "scripts": {
+    "build": "pnpm -r run build"
+  }
+}

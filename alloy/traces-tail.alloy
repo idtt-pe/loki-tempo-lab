@@ -1,0 +1,55 @@
+otelcol.receiver.otlp "apps" {
+  http {
+    endpoint = "0.0.0.0:4318"
+  }
+  output {
+    traces = [otelcol.processor.tail_sampling.keep.input]
+  }
+}
+
+otelcol.processor.tail_sampling "keep" {
+  decision_wait = "5s"
+
+  policy {
+    name = "errors"
+    type = "status_code"
+    status_code {
+      status_codes = ["ERROR"]
+    }
+  }
+
+  policy {
+    name = "slow"
+    type = "latency"
+    latency {
+      threshold_ms = 500
+    }
+  }
+
+  policy {
+    name = "sample"
+    type = "probabilistic"
+    probabilistic {
+      sampling_percentage = 10
+    }
+  }
+
+  output {
+    traces = [otelcol.processor.batch.apps.input]
+  }
+}
+
+otelcol.processor.batch "apps" {
+  output {
+    traces = [otelcol.exporter.otlp.tempo.input]
+  }
+}
+
+otelcol.exporter.otlp "tempo" {
+  client {
+    endpoint = "tempo:4317"
+    tls {
+      insecure = true
+    }
+  }
+}

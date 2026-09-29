@@ -1,0 +1,158 @@
+== tail: Loki, Tempo y Alloy desde cero
+ Container loki-tempo-lab-loki-1  Stopping
+ Container loki-tempo-lab-tempo-1  Stopping
+ Container loki-tempo-lab-alloy-1  Stopping
+ Container loki-tempo-lab-alloy-1  Stopped
+ Container loki-tempo-lab-loki-1  Stopped
+ Container loki-tempo-lab-tempo-1  Stopped
+ Container loki-tempo-lab-alloy-1  Removing
+ Container loki-tempo-lab-loki-1  Removing
+ Container loki-tempo-lab-tempo-1  Removing
+ Container loki-tempo-lab-loki-1  Removed
+ Container loki-tempo-lab-tempo-1  Removed
+ Container loki-tempo-lab-alloy-1  Removed
+ Volume loki-tempo-lab_tempo-data  Creating
+ Volume loki-tempo-lab_tempo-data  Created
+ Volume loki-tempo-lab_alloy-data  Creating
+ Volume loki-tempo-lab_alloy-data  Created
+ Volume loki-tempo-lab_loki-data  Creating
+ Volume loki-tempo-lab_loki-data  Created
+ Container loki-tempo-lab-alloy-1  Creating
+ Container loki-tempo-lab-loki-1  Creating
+ Container loki-tempo-lab-antifraud-1  Recreate
+ Container loki-tempo-lab-redpanda-1  Running
+ Container loki-tempo-lab-write-db-1  Running
+ Container loki-tempo-lab-read-db-1  Running
+ Container loki-tempo-lab-tempo-1  Creating
+ Container loki-tempo-lab-command-api-1  Recreate
+ Container loki-tempo-lab-projector-1  Recreate
+ Container loki-tempo-lab-query-api-1  Recreate
+ Container loki-tempo-lab-alloy-1  Created
+ Container loki-tempo-lab-tempo-1  Created
+ Container loki-tempo-lab-loki-1  Created
+ Container loki-tempo-lab-projector-1  Recreated
+ Container loki-tempo-lab-query-api-1  Recreated
+ Container loki-tempo-lab-command-api-1  Recreated
+ Container loki-tempo-lab-antifraud-1  Recreated
+ Container loki-tempo-lab-antifraud-1  Starting
+ Container loki-tempo-lab-redpanda-1  Waiting
+ Container loki-tempo-lab-read-db-1  Waiting
+ Container loki-tempo-lab-write-db-1  Waiting
+ Container loki-tempo-lab-alloy-1  Starting
+ Container loki-tempo-lab-loki-1  Starting
+ Container loki-tempo-lab-tempo-1  Starting
+ Container loki-tempo-lab-write-db-1  Waiting
+ Container loki-tempo-lab-read-db-1  Waiting
+ Container loki-tempo-lab-antifraud-1  Started
+ Container loki-tempo-lab-tempo-1  Started
+ Container loki-tempo-lab-alloy-1  Started
+ Container loki-tempo-lab-loki-1  Started
+ Container loki-tempo-lab-redpanda-1  Healthy
+ Container loki-tempo-lab-write-db-1  Healthy
+ Container loki-tempo-lab-command-api-1  Starting
+ Container loki-tempo-lab-write-db-1  Healthy
+ Container loki-tempo-lab-read-db-1  Healthy
+ Container loki-tempo-lab-projector-1  Starting
+ Container loki-tempo-lab-read-db-1  Healthy
+ Container loki-tempo-lab-query-api-1  Starting
+ Container loki-tempo-lab-query-api-1  Started
+ Container loki-tempo-lab-command-api-1  Started
+ Container loki-tempo-lab-projector-1  Started
+ Container loki-tempo-lab-tempo-1  Waiting
+ Container loki-tempo-lab-antifraud-1  Waiting
+ Container loki-tempo-lab-alloy-1  Waiting
+ Container loki-tempo-lab-loki-1  Waiting
+ Container loki-tempo-lab-query-api-1  Waiting
+ Container loki-tempo-lab-read-db-1  Waiting
+ Container loki-tempo-lab-redpanda-1  Waiting
+ Container loki-tempo-lab-projector-1  Waiting
+ Container loki-tempo-lab-write-db-1  Waiting
+ Container loki-tempo-lab-command-api-1  Waiting
+ Container loki-tempo-lab-loki-1  Healthy
+ Container loki-tempo-lab-query-api-1  Healthy
+ Container loki-tempo-lab-command-api-1  Healthy
+ Container loki-tempo-lab-projector-1  Healthy
+ Container loki-tempo-lab-alloy-1  Healthy
+ Container loki-tempo-lab-read-db-1  Healthy
+ Container loki-tempo-lab-write-db-1  Healthy
+ Container loki-tempo-lab-redpanda-1  Healthy
+ Container loki-tempo-lab-tempo-1  Healthy
+ Container loki-tempo-lab-antifraud-1  Healthy
+== tail: esperando la decisión de muestreo y el envío por lotes
+tools/run.sh: line 33: 49094 Terminated: 15          ( while true; do
+    docker stats --no-stream --format '{{json .}}' loki-tempo-lab-loki-1 loki-tempo-lab-tempo-1 loki-tempo-lab-alloy-1 >> "$OUT/stats.jsonl"; sleep 5;
+done )
+{
+  "mode": "tail",
+  "perRequest": {
+    "lokiBytesReceived": 506.0,
+    "tempoBytesReceived": 359.2,
+    "lokiLines": 1.63,
+    "tempoSpans": 0.65,
+    "lokiStoredBytes": 101.3,
+    "tempoStoredBytes": 141.4
+  },
+  "disk": {
+    "loki_chunks": 15982250,
+    "loki_index": 47409,
+    "loki_wal": 41079917,
+    "tempo_blocks": 22372030,
+    "tempo_live_store": 15699393,
+    "tempo_wal": 8192
+  },
+  "resources": {
+    "loki": {
+      "cpuAvgPct": 0.7,
+      "cpuMaxPct": 2.3,
+      "memMaxMiB": 148.5
+    },
+    "tempo": {
+      "cpuAvgPct": 1.5,
+      "cpuMaxPct": 18.3,
+      "memMaxMiB": 246.3
+    },
+    "alloy": {
+      "cpuAvgPct": 3.9,
+      "cpuMaxPct": 9.9,
+      "memMaxMiB": 127.5
+    }
+  },
+  "coverage": [
+    {
+      "case": "errores",
+      "logQuery": "{service_name=\"command-api\", level=\"error\"}",
+      "requestsInLoki": 357,
+      "checkedInTempo": 300,
+      "foundInTempo": 300,
+      "foundRate": 1.0,
+      "traceByIdMsMedian": 34.9
+    },
+    {
+      "case": "lentos",
+      "logQuery": "{service_name=\"command-api\"} | json | route=\"/payments\" | duration_ms > 1000",
+      "requestsInLoki": 1362,
+      "checkedInTempo": 300,
+      "foundInTempo": 300,
+      "foundRate": 1.0,
+      "traceByIdMsMedian": 14.2
+    },
+    {
+      "case": "normales",
+      "logQuery": "{service_name=\"command-api\"} | json | route=\"/payments\" | status=\"201\" | duration_ms < 100",
+      "requestsInLoki": 5000,
+      "checkedInTempo": 300,
+      "foundInTempo": 31,
+      "foundRate": 0.1033,
+      "traceByIdMsMedian": 4.9
+    },
+    {
+      "case": "cliente-777",
+      "logQuery": "{service_name=~\"command-api|query-api\"} | json | wallet_id=\"777\"",
+      "requestsInLoki": 737,
+      "checkedInTempo": 300,
+      "foundInTempo": 40,
+      "foundRate": 0.1333,
+      "traceByIdMsMedian": 4.6
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+name: loki-tempo-lab
+
+x-postgres: &postgres
+  image: postgres:18-alpine
+  environment:
+    POSTGRES_USER: lab
+    POSTGRES_PASSWORD: lab
+    POSTGRES_DB: wallet
+    TZ: America/Lima
+  healthcheck:
+    test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U lab -d wallet"]
+    interval: 2s
+    timeout: 3s
+    retries: 300
+    start_period: 10s
+
+x-app: &app
+  build: .
+  image: loki-tempo-lab-app
+  restart: unless-stopped
+  labels:
+    lab.logs: "true"
+
+x-otel: &otel
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://alloy:4318
+  OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+  OTEL_TRACES_SAMPLER: parentbased_traceidratio
+  OTEL_TRACES_SAMPLER_ARG: ${TRACE_RATIO:-1}
+  OTEL_METRICS_EXPORTER: none
+  OTEL_LOGS_EXPORTER: none
+
+services:
+  # ---------- La billetera (variante CQRS de cqrs-lab) ----------
+  write-db:
+    <<: *postgres
+    command: >
+      postgres -c shared_buffers=256MB -c effective_cache_size=640MB -c max_connections=200 -c max_wal_size=4GB
+               -c timezone=America/Lima
+    volumes:
+      - ./db/write:/docker-entrypoint-initdb.d:ro
+      - write-data:/var/lib/postgresql
+    cpuset: "0"
+    mem_limit: 768m
+
+  read-db:
+    <<: *postgres
+    command: >
+      postgres -c shared_buffers=256MB -c effective_cache_size=640MB -c max_connections=200 -c max_wal_size=4GB
+               -c timezone=America/Lima
+    volumes:
+      - ./db/read/01-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/read/02-rebuild-from-write.sql:/rebuild/02-rebuild-from-write.sql:ro
+      - read-data:/var/lib/postgresql
+    cpuset: "1"
+    mem_limit: 768m
+
+  redpanda:
+    image: redpandadata/redpanda:v25.2.9
+    command: >
+      redpanda start --mode dev-container --smp 1 --memory 400M --overprovisioned
+      --kafka-addr internal://0.0.0.0:9092 --advertise-kafka-addr internal://redpanda:9092
+    healthcheck:
+      test: ["CMD-SHELL", "rpk cluster health | grep -q 'Healthy:.*true'"]
+      interval: 2s
+      timeout: 3s
+      retries: 60
+    cpuset: "2"
+    mem_limit: 640m
+
+  antifraud:
+    <<: *app
+    labels: {}
+    working_dir: /lab/apps/antifraud
+    command: node dist/main.js
+    ports: ["3103:3000"]
+    cpuset: "6"
+    mem_limit: 128m
+
+  command-api:
+    <<: *app
+    working_dir: /lab/apps/command-api
+    command: node --import telemetry/register dist/main.js
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: command-api
+      DATABASE_URL: postgres://lab:lab@write-db:5432/wallet
+      ANTIFRAUD_URL: http://antifraud:3000
+      PG_POOL: 20
+    ports: ["3101:3000"]
+    depends_on:
+      write-db: { condition: service_healthy }
+    cpuset: "3"
+    mem_limit: 384m
+
+  query-api:
+    <<: *app
+    working_dir: /lab/apps/query-api
+    command: node --import telemetry/register dist/main.js
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: query-api
+      DATABASE_URL: postgres://lab:lab@read-db:5432/wallet
+      PG_POOL: 20
+    ports: ["3102:3000"]
+    depends_on:
+      read-db: { condition: service_healthy }
+    cpuset: "4"
+    mem_limit: 384m
+
+  projector:
+    <<: *app
+    profiles: [projector]
+    working_dir: /lab/apps/projector
+    command: node --import telemetry/register dist/main.js
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: projector
+      WRITE_DATABASE_URL: postgres://lab:lab@write-db:5432/wallet
+      READ_DATABASE_URL: postgres://lab:lab@read-db:5432/wallet
+      KAFKA_BROKERS: redpanda:9092
+      KAFKAJS_NO_PARTITIONER_WARNING: 1
+    ports: ["3109:9100"]
+    depends_on:
+      write-db: { condition: service_healthy }
+      read-db: { condition: service_healthy }
+      redpanda: { condition: service_healthy }
+    cpuset: "5"
+    mem_limit: 256m
+
+  # ---------- Observabilidad ----------
+  alloy:
+    image: grafana/alloy:v1.20.1
+    command: run /etc/alloy/lab --storage.path=/var/lib/alloy/data --server.http.listen-addr=0.0.0.0:12345
+    volumes:
+      - ./alloy/logs-${LOGS_MODE:-metadata}.alloy:/etc/alloy/lab/logs.alloy:ro
+      - ./alloy/traces-${TRACES_MODE:-full}.alloy:/etc/alloy/lab/traces.alloy:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - alloy-data:/var/lib/alloy/data
+    ports: ["12345:12345"]
+    cpuset: "7"
+    mem_limit: 512m
+
+  loki:
+    image: grafana/loki:3.7.8
+    command: -config.file=/etc/loki/loki.yaml
+    volumes:
+      - ./loki/loki.yaml:/etc/loki/loki.yaml:ro
+      - loki-data:/loki
+    ports: ["3100:3100"]
+    cpuset: "8"
+    mem_limit: 1g
+
+  tempo:
+    image: grafana/tempo:3.0.3
+    command: -target=all -config.file=/etc/tempo.yaml
+    volumes:
+      - ./tempo/tempo.yaml:/etc/tempo.yaml:ro
+      - tempo-data:/var/tempo
+    ports: ["3200:3200"]
+    cpuset: "9"
+    mem_limit: 1g
+
+  grafana:
+    image: grafana/grafana:13.2.2
+    profiles: [ui]
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    ports: ["3000:3000"]
+    cpuset: "10"
+    mem_limit: 384m
+
+  # ---------- Generador de carga ----------
+  k6:
+    image: grafana/k6:1.3.0
+    profiles: [tools]
+    volumes:
+      - ./load:/load:ro
+      - ./results:/results
+    cpuset: "11-13"
+    mem_limit: 768m
+
+volumes:
+  write-data:
+  read-data:
+  alloy-data:
+  loki-data:
+  tempo-data:

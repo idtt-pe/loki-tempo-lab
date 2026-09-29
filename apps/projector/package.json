@@ -1,0 +1,20 @@
+{
+  "name": "projector",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.9.1",
+    "kafkajs": "^2.2.4",
+    "pg": "^8.23.0",
+    "telemetry": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.23.1",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "mode": "head10",
+  "window": {
+    "start": 1790662335,
+    "end": 1790662816,
+    "seconds": 481
+  },
+  "k6": {
+    "mode": "head10",
+    "config": {
+      "PAY": 100,
+      "STATEMENT": 200,
+      "DASHBOARD": 20,
+      "PHASE_MIN": 2,
+      "ERROR_RATE": 0.03,
+      "SLOW_ABOVE": 4500,
+      "SLOW_MS": 1200,
+      "HOT_WALLET": 777,
+      "HOT_SHARE": 0.005
+    },
+    "requests": 158336,
+    "droppedIterations": 71,
+    "endpoints": {
+      "pay": {
+        "count": 48000,
+        "p50": 4.803209,
+        "p95": 18.626327749999994,
+        "p99": 1203.07843817,
+        "max": 1630.160626,
+        "failedRate": 0.010541666666666666
+      },
+      "topup": {
+        "count": 4801,
+        "p50": 1.772125,
+        "p95": 8.414459,
+        "p99": 24.9175,
+        "max": 527.970792
+      },
+      "statement": {
+        "count": 95930,
+        "p50": 0.663084,
+        "p95": 2.3159562499999984,
+        "p99": 15.00067999999997,
+        "max": 886.098876
+      },
+      "dashboard": {
+        "count": 9601,
+        "p50": 1.056125,
+        "p95": 3.081166,
+        "p99": 17.895834,
+        "max": 429.830834
+      }
+    }
+  },
+  "ingest": {
+    "lokiBytes": 80083804.0,
+    "lokiStructuredMetadataBytes": 13301379.0,
+    "lokiLines": 257993.0,
+    "lokiStreams": 11.0,
+    "lokiDiscardedLinesByReason": {},
+    "tempoBytes": 35520612.0,
+    "tempoSpans": 88353.0,
+    "tempoDiscardedSpansByReason": {}
+  },
+  "disk": {
+    "loki_chunks": 15948273,
+    "loki_index": 47519,
+    "loki_wal": 93617847,
+    "tempo_blocks": 21637006,
+    "tempo_live_store": 15669066,
+    "tempo_wal": 8192
+  },
+  "perRequest": {
+    "lokiBytesReceived": 505.8,
+    "tempoBytesReceived": 224.3,
+    "lokiLines": 1.63,
+    "tempoSpans": 0.56,
+    "lokiStoredBytes": 101.0,
+    "tempoStoredBytes": 136.7
+  },
+  "resources": {
+    "loki": {
+      "cpuAvgPct": 0.6,
+      "cpuMaxPct": 1.8,
+      "memMaxMiB": 142.0
+    },
+    "tempo": {
+      "cpuAvgPct": 0.7,
+      "cpuMaxPct": 8.7,
+      "memMaxMiB": 265.5
+    },
+    "alloy": {
+      "cpuAvgPct": 2.8,
+      "cpuMaxPct": 4.6,
+      "memMaxMiB": 84.7
+    }
+  },
+  "counts": {
+    "lokiPaymentErrors": {
+      "query": "sum(count_over_time({service_name=\"command-api\", level=\"error\"} [481s]))",
+      "value": 396.0,
+      "wallMs": 7.0
+    },
+    "lokiSlowPayments": {
+      "query": "sum(count_over_time({service_name=\"command-api\"} | json | route=\"/payments\" | duration_ms > 1000 [481s]))",
+      "value": 1305.0,
+      "wallMs": 164.9
+    },
+    "tempoErrorTraces": {
+      "query": "{ status = error && kind = server } | count_over_time()",
+      "value": 7.0,
+      "status": 200,
+      "wallMs": 22.6
+    },
+    "tempoSlowPayments": {
+      "query": "{ name = \"POST /payments\" && duration > 1s } | count_over_time()",
+      "value": 0.0,
+      "status": 200,
+      "wallMs": 7.8
+    }
+  },
+  "queries": {
+    "loki": {
+      "errors": {
+        "query": "{service_name=\"command-api\", level=\"error\"}",
+        "wallMsMedian": 4.5,
+        "results": 20,
+        "bytesProcessed": 140772,
+        "linesProcessed": 396
+      },
+      "slowPayments": {
+        "query": "{service_name=\"command-api\"} | json | route=\"/payments\" | duration_ms > 1000",
+        "wallMsMedian": 80.6,
+        "results": 20,
+        "bytesProcessed": 10670677,
+        "linesProcessed": 28882
+      },
+      "hotWalletJson": {
+        "query": "{service_name=~\"command-api|query-api\"} | json | wallet_id=\"777\"",
+        "wallMsMedian": 527.3,
+        "results": 963,
+        "bytesProcessed": 79083138,
+        "linesProcessed": 211133
+      },
+      "hotWalletLineFilter": {
+        "query": "{service_name=~\"command-api|query-api\"} |= `\"wallet_id\":777,`",
+        "wallMsMedian": 418.9,
+        "results": 963,
+        "bytesProcessed": 79083138,
+        "linesProcessed": 211133
+      },
+      "byTraceId": {
+        "query": "{service_name=~\".+\"} | trace_id=\"461dd3423cd9788f3b99ee82ed089bd4\"",
+        "wallMsMedian": 341.8,
+        "results": 2,
+        "bytesProcessed": 88127395,
+        "linesProcessed": 257993
+      }
+    },
+    "tempo": {
+      "errors": {
+        "query": "{ status = error }",
+        "wallMsMedian": 28.2,
+        "results": 20,
+        "inspectedBytes": 1275209,
+        "inspectedTraces": 0
+      },
+      "slowPayments": {
+        "query": "{ name = \"POST /payments\" && duration > 1s }",
+        "wallMsMedian": 23.2,
+        "results": 20,
+        "inspectedBytes": 1296205,
+        "inspectedTraces": 0
+      },
+      "slowAntifraud": {
+        "query": "{ name = \"antifraud.check\" && duration > 1s }",
+        "wallMsMedian": 22.2,
+        "results": 20,
+        "inspectedBytes": 1296205,
+        "inspectedTraces": 0
+      },
+      "hotWallet": {
+        "query": "{ span.wallet.id = 777 }",
+        "wallMsMedian": 55.6,
+        "results": 66,
+        "inspectedBytes": 5584134,
+        "inspectedTraces": 0
+      }
+    },
+    "sampleTraceId": "461dd3423cd9788f3b99ee82ed089bd4"
+  },
+  "coverage": [
+    {
+      "case": "errores",
+      "logQuery": "{service_name=\"command-api\", level=\"error\"}",
+      "requestsInLoki": 396,
+      "checkedInTempo": 300,
+      "foundInTempo": 29,
+      "foundRate": 0.0967,
+      "traceByIdMsMedian": 4.7
+    },
+    {
+      "case": "lentos",
+      "logQuery": "{service_name=\"command-api\"} | json | route=\"/payments\" | duration_ms > 1000",
+      "requestsInLoki": 1305,
+      "checkedInTempo": 300,
+      "foundInTempo": 27,
+      "foundRate": 0.09,
+      "traceByIdMsMedian": 4.0
+    },
+    {
+      "case": "normales",
+      "logQuery": "{service_name=\"command-api\"} | json | route=\"/payments\" | status=\"201\" | duration_ms < 100",
+      "requestsInLoki": 5000,
+      "checkedInTempo": 300,
+      "foundInTempo": 31,
+      "foundRate": 0.1033,
+      "traceByIdMsMedian": 4.3
+    },
+    {
+      "case": "cliente-777",
+      "logQuery": "{service_name=~\"command-api|query-api\"} | json | wallet_id=\"777\"",
+      "requestsInLoki": 717,
+      "checkedInTempo": 300,
+      "foundInTempo": 26,
+      "foundRate": 0.0867,
+      "traceByIdMsMedian": 3.8
+    }
+  ]
+}

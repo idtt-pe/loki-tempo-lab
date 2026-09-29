@@ -1,0 +1,54 @@
+time="2026-09-29T14:54:46Z" level=info msg="faults 2026-09-29T14:54:46.868Z {} -> 200" source=console
+time="2026-09-29T14:55:40Z" level=warning msg="The test has generated metrics with 100115 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details." component=metrics-engine-ingester
+time="2026-09-29T14:56:37Z" level=warning msg="The test has generated metrics with 200069 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details." component=metrics-engine-ingester
+time="2026-09-29T14:56:46Z" level=info msg="faults 2026-09-29T14:56:46.866Z {\"errorRate\":0.03} -> 200" source=console
+time="2026-09-29T14:58:44Z" level=warning msg="The test has generated metrics with 400026 unique time series, which is higher than the suggested limit of 100000 and could cause high memory usage. Consider not using high-cardinality values like unique IDs as metric tags or, if you need them in the URL, use the name metric tag or URL grouping. See https://grafana.com/docs/k6/latest/using-k6/tags-and-groups/ for details." component=metrics-engine-ingester
+time="2026-09-29T14:58:46Z" level=info msg="faults 2026-09-29T14:58:46.866Z {\"slowAboveCents\":4500,\"slowMs\":1200} -> 200" source=console
+time="2026-09-29T15:00:46Z" level=info msg="faults 2026-09-29T15:00:46.867Z {} -> 200" source=console
+{
+  "mode": "tail",
+  "config": {
+    "PAY": 100,
+    "STATEMENT": 200,
+    "DASHBOARD": 20,
+    "PHASE_MIN": 2,
+    "ERROR_RATE": 0.03,
+    "SLOW_ABOVE": 4500,
+    "SLOW_MS": 1200,
+    "HOT_WALLET": 777,
+    "HOT_SHARE": 0.005
+  },
+  "requests": 158251,
+  "droppedIterations": 158,
+  "endpoints": {
+    "pay": {
+      "count": 47998,
+      "p50": 4.9417705000000005,
+      "p95": 20.79546879999999,
+      "p99": 1203.35734201,
+      "max": 1911.292209,
+      "failedRate": 0.01070877953248052
+    },
+    "topup": {
+      "count": 4801,
+      "p50": 1.923709,
+      "p95": 7.915917,
+      "p99": 35.374666,
+      "max": 641.185917
+    },
+    "statement": {
+      "count": 95847,
+      "p50": 0.783667,
+      "p95": 2.6821042999999993,
+      "p99": 15.850667679999994,
+      "max": 913.929042
+    },
+    "dashboard": {
+      "count": 9601,
+      "p50": 1.338417,
+      "p95": 3.717834,
+      "p99": 20.82175,
+      "max": 720.164375
+    }
+  }
+}

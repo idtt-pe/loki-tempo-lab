@@ -1,0 +1,20 @@
+{
+  "name": "telemetry",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./register": "./register.js",
+    "./log": "./log.js"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.222.0",
+    "@opentelemetry/instrumentation": "^0.222.0",
+    "@opentelemetry/instrumentation-http": "^0.222.0",
+    "@opentelemetry/instrumentation-pg": "^0.74.0",
+    "@opentelemetry/instrumentation-pino": "^0.68.0",
+    "@opentelemetry/instrumentation-undici": "^0.32.0",
+    "@opentelemetry/sdk-node": "^0.222.0",
+    "pino": "^10.3.1"
+  }
+}

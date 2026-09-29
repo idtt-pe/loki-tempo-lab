@@ -1,0 +1,23 @@
+otelcol.receiver.otlp "apps" {
+  http {
+    endpoint = "0.0.0.0:4318"
+  }
+  output {
+    traces = [otelcol.processor.batch.apps.input]
+  }
+}
+
+otelcol.processor.batch "apps" {
+  output {
+    traces = [otelcol.exporter.otlp.tempo.input]
+  }
+}
+
+otelcol.exporter.otlp "tempo" {
+  client {
+    endpoint = "tempo:4317"
+    tls {
+      insecure = true
+    }
+  }
+}

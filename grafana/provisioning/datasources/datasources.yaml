@@ -1,0 +1,36 @@
+apiVersion: 1
+
+datasources:
+  - name: Loki
+    type: loki
+    uid: loki
+    access: proxy
+    url: http://loki:3100
+    jsonData:
+      derivedFields:
+        - name: trace_id
+          datasourceUid: tempo
+          matcherType: label
+          matcherRegex: trace_id
+          url: "$${__value.raw}"
+          urlDisplayLabel: Ver traza en Tempo
+
+  - name: Tempo
+    type: tempo
+    uid: tempo
+    access: proxy
+    url: http://tempo:3200
+    isDefault: true
+    jsonData:
+      tracesToLogsV2:
+        datasourceUid: loki
+        filterByTraceID: true
+        spanStartTimeShift: "-5m"
+        spanEndTimeShift: "5m"
+        tags:
+          - key: service.name
+            value: service_name
+      lokiSearch:
+        datasourceUid: loki
+      nodeGraph:
+        enabled: true

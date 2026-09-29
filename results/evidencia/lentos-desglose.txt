@@ -1,0 +1,11 @@
+Desglose de 100 trazas lentas ({ name = "POST /payments" && duration > 1s }) de la corrida tail
+ventana: results/raw/tail/window · consultado en Tempo /api/v2/traces/<id>
+
+                 mediana     mín      máx
+total ms          1202.7   1200.7   1215.1
+antifraude ms     1201.1   1199.7   1203.3
+sql ms               1.1      0.3     13.3
+% antifraude        99.9     98.9     99.9
+spans               11.0        8       11
+
+traza de ejemplo: 5193c979d16fcd79b7956e6e1a7798f9

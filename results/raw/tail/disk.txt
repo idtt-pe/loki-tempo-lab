@@ -1,0 +1,6 @@
+loki_chunks 15982250
+loki_index 47409
+loki_wal 41079917
+tempo_blocks 22372030
+tempo_live_store 15699393
+tempo_wal 8192

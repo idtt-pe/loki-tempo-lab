@@ -1,0 +1,897 @@
+# HELP deprecated_flags_inuse_total The number of deprecated flags currently set.
+# TYPE deprecated_flags_inuse_total counter
+deprecated_flags_inuse_total 0
+# HELP go_gc_duration_seconds A summary of the wall-time pause (stop-the-world) duration in garbage collection cycles.
+# TYPE go_gc_duration_seconds summary
+go_gc_duration_seconds{quantile="0"} 1.25e-05
+go_gc_duration_seconds{quantile="0.25"} 3.7084e-05
+go_gc_duration_seconds{quantile="0.5"} 6.9083e-05
+go_gc_duration_seconds{quantile="0.75"} 0.0001595
+go_gc_duration_seconds{quantile="1"} 0.001497542
+go_gc_duration_seconds_sum 0.022753588
+go_gc_duration_seconds_count 166
+# HELP go_gc_gogc_percent Heap size target percentage configured by the user, otherwise 100. This value is set by the GOGC environment variable, and the runtime/debug.SetGCPercent function. Sourced from /gc/gogc:percent.
+# TYPE go_gc_gogc_percent gauge
+go_gc_gogc_percent 100
+# HELP go_gc_gomemlimit_bytes Go runtime memory limit configured by the user, otherwise math.MaxInt64. This value is set by the GOMEMLIMIT environment variable, and the runtime/debug.SetMemoryLimit function. Sourced from /gc/gomemlimit:bytes.
+# TYPE go_gc_gomemlimit_bytes gauge
+go_gc_gomemlimit_bytes 9.223372036854776e+18
+# HELP go_goroutines Number of goroutines that currently exist.
+# TYPE go_goroutines gauge
+go_goroutines 612
+# HELP go_info Information about the Go environment.
+# TYPE go_info gauge
+go_info{version="go1.26.5"} 1
+# HELP go_memstats_alloc_bytes Number of bytes allocated in heap and currently in use. Equals to /memory/classes/heap/objects:bytes.
+# TYPE go_memstats_alloc_bytes gauge
+go_memstats_alloc_bytes 1.60843016e+08
+# HELP go_memstats_alloc_bytes_total Total number of bytes allocated in heap until now, even if released already. Equals to /gc/heap/allocs:bytes.
+# TYPE go_memstats_alloc_bytes_total counter
+go_memstats_alloc_bytes_total 1.1288073824e+10
+# HELP go_memstats_buck_hash_sys_bytes Number of bytes used by the profiling bucket hash table. Equals to /memory/classes/profiling/buckets:bytes.
+# TYPE go_memstats_buck_hash_sys_bytes gauge
+go_memstats_buck_hash_sys_bytes 1.824995e+06
+# HELP go_memstats_frees_total Total number of heap objects frees. Equals to /gc/heap/frees:objects + /gc/heap/tiny/allocs:objects.
+# TYPE go_memstats_frees_total counter
+go_memstats_frees_total 1.61822801e+08
+# HELP go_memstats_gc_sys_bytes Number of bytes used for garbage collection system metadata. Equals to /memory/classes/metadata/other:bytes.
+# TYPE go_memstats_gc_sys_bytes gauge
+go_memstats_gc_sys_bytes 8.821184e+06
+# HELP go_memstats_heap_alloc_bytes Number of heap bytes allocated and currently in use, same as go_memstats_alloc_bytes. Equals to /memory/classes/heap/objects:bytes.
+# TYPE go_memstats_heap_alloc_bytes gauge
+go_memstats_heap_alloc_bytes 1.60843016e+08
+# HELP go_memstats_heap_idle_bytes Number of heap bytes waiting to be used. Equals to /memory/classes/heap/released:bytes + /memory/classes/heap/free:bytes.
+# TYPE go_memstats_heap_idle_bytes gauge
+go_memstats_heap_idle_bytes 6.79305216e+08
+# HELP go_memstats_heap_inuse_bytes Number of heap bytes that are in use. Equals to /memory/classes/heap/objects:bytes + /memory/classes/heap/unused:bytes
+# TYPE go_memstats_heap_inuse_bytes gauge
+go_memstats_heap_inuse_bytes 1.93503232e+08
+# HELP go_memstats_heap_objects Number of currently allocated objects. Equals to /gc/heap/objects:objects.
+# TYPE go_memstats_heap_objects gauge
+go_memstats_heap_objects 246966
+# HELP go_memstats_heap_released_bytes Number of heap bytes released to OS. Equals to /memory/classes/heap/released:bytes.
+# TYPE go_memstats_heap_released_bytes gauge
+go_memstats_heap_released_bytes 6.4708608e+08
+# HELP go_memstats_heap_sys_bytes Number of heap bytes obtained from system. Equals to /memory/classes/heap/objects:bytes + /memory/classes/heap/unused:bytes + /memory/classes/heap/released:bytes + /memory/classes/heap/free:bytes.
+# TYPE go_memstats_heap_sys_bytes gauge
+go_memstats_heap_sys_bytes 8.72808448e+08
+# HELP go_memstats_last_gc_time_seconds Number of seconds since 1970 of last garbage collection.
+# TYPE go_memstats_last_gc_time_seconds gauge
+go_memstats_last_gc_time_seconds 1.7906619993286252e+09
+# HELP go_memstats_mallocs_total Total number of heap objects allocated, both live and gc-ed. Semantically a counter version for go_memstats_heap_objects gauge. Equals to /gc/heap/allocs:objects + /gc/heap/tiny/allocs:objects.
+# TYPE go_memstats_mallocs_total counter
+go_memstats_mallocs_total 1.62069767e+08
+# HELP go_memstats_mcache_inuse_bytes Number of bytes in use by mcache structures. Equals to /memory/classes/metadata/mcache/inuse:bytes.
+# TYPE go_memstats_mcache_inuse_bytes gauge
+go_memstats_mcache_inuse_bytes 2296
+# HELP go_memstats_mcache_sys_bytes Number of bytes used for mcache structures obtained from system. Equals to /memory/classes/metadata/mcache/inuse:bytes + /memory/classes/metadata/mcache/free:bytes.
+# TYPE go_memstats_mcache_sys_bytes gauge
+go_memstats_mcache_sys_bytes 16072
+# HELP go_memstats_mspan_inuse_bytes Number of bytes in use by mspan structures. Equals to /memory/classes/metadata/mspan/inuse:bytes.
+# TYPE go_memstats_mspan_inuse_bytes gauge
+go_memstats_mspan_inuse_bytes 1.96928e+06
+# HELP go_memstats_mspan_sys_bytes Number of bytes used for mspan structures obtained from system. Equals to /memory/classes/metadata/mspan/inuse:bytes + /memory/classes/metadata/mspan/free:bytes.
+# TYPE go_memstats_mspan_sys_bytes gauge
+go_memstats_mspan_sys_bytes 6.16896e+06
+# HELP go_memstats_next_gc_bytes Number of heap bytes when next garbage collection will take place. Equals to /gc/heap/goal:bytes.
+# TYPE go_memstats_next_gc_bytes gauge
+go_memstats_next_gc_bytes 2.05904938e+08
+# HELP go_memstats_other_sys_bytes Number of bytes used for other system allocations. Equals to /memory/classes/other:bytes.
+# TYPE go_memstats_other_sys_bytes gauge
+go_memstats_other_sys_bytes 1.091309e+06
+# HELP go_memstats_stack_inuse_bytes Number of bytes obtained from system for stack allocator in non-CGO environments. Equals to /memory/classes/heap/stacks:bytes.
+# TYPE go_memstats_stack_inuse_bytes gauge
+go_memstats_stack_inuse_bytes 3.801088e+06
+# HELP go_memstats_stack_sys_bytes Number of bytes obtained from system for stack allocator. Equals to /memory/classes/heap/stacks:bytes + /memory/classes/os-stacks:bytes.
+# TYPE go_memstats_stack_sys_bytes gauge
+go_memstats_stack_sys_bytes 3.801088e+06
+# HELP go_memstats_sys_bytes Number of bytes obtained from system. Equals to /memory/classes/total:byte.
+# TYPE go_memstats_sys_bytes gauge
+go_memstats_sys_bytes 8.94532056e+08
+# HELP go_sched_gomaxprocs_threads The current runtime.GOMAXPROCS setting, or the number of operating system threads that can execute user-level Go code simultaneously. Sourced from /sched/gomaxprocs:threads.
+# TYPE go_sched_gomaxprocs_threads gauge
+go_sched_gomaxprocs_threads 1
+# HELP go_threads Number of OS threads created.
+# TYPE go_threads gauge
+go_threads 7
+# HELP grpc_concurrent_streams_by_conn_max The current number of concurrent streams in the connection with the most concurrent streams.
+# TYPE grpc_concurrent_streams_by_conn_max gauge
+grpc_concurrent_streams_by_conn_max 20
+# HELP kv_request_duration_seconds Time spent on kv store requests.
+# TYPE kv_request_duration_seconds histogram
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.005"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.01"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.025"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.05"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.1"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.25"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.5"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="1"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="2.5"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="5"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="10"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory",le="+Inf"} 227
+kv_request_duration_seconds_sum{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory"} 0.012907998000000002
+kv_request_duration_seconds_count{kv_name="livestore-partitions-lifecycler",operation="CAS",role="primary",status_code="200",type="inmemory"} 227
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="0.005"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="0.01"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="0.025"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="0.05"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="0.1"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="0.25"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="0.5"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="1"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="2.5"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="5"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="10"} 1
+kv_request_duration_seconds_bucket{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory",le="+Inf"} 1
+kv_request_duration_seconds_sum{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory"} 5.958e-06
+kv_request_duration_seconds_count{kv_name="livestore-partitions-watcher",operation="GET",role="primary",status_code="200",type="inmemory"} 1
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 27.58
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP process_network_receive_bytes_total Number of bytes received by the process over the network.
+# TYPE process_network_receive_bytes_total counter
+process_network_receive_bytes_total 3.7462662e+07
+# HELP process_network_transmit_bytes_total Number of bytes sent by the process over the network.
+# TYPE process_network_transmit_bytes_total counter
+process_network_transmit_bytes_total 430962
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 21
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 3.07871744e+08
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79066148081e+09
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 2.274103296e+09
+# HELP process_virtual_memory_max_bytes Maximum amount of virtual memory available in bytes.
+# TYPE process_virtual_memory_max_bytes gauge
+process_virtual_memory_max_bytes 1.8446744073709552e+19
+# HELP prometheus_remote_storage_exemplars_in_total Exemplars in to remote storage, compare to exemplars out for queue managers. Deprecated, check prometheus_wal_watcher_records_read_total and prometheus_remote_storage_exemplars_dropped_total
+# TYPE prometheus_remote_storage_exemplars_in_total counter
+prometheus_remote_storage_exemplars_in_total 0
+# HELP prometheus_remote_storage_histograms_in_total HistogramSamples in to remote storage, compare to histograms out for queue managers. Deprecated, check prometheus_wal_watcher_records_read_total and prometheus_remote_storage_histograms_dropped_total
+# TYPE prometheus_remote_storage_histograms_in_total counter
+prometheus_remote_storage_histograms_in_total 0
+# HELP prometheus_remote_storage_samples_in_total Samples in to remote storage, compare to samples out for queue managers. Deprecated, check prometheus_wal_watcher_records_read_total and prometheus_remote_storage_samples_dropped_total
+# TYPE prometheus_remote_storage_samples_in_total counter
+prometheus_remote_storage_samples_in_total 0
+# HELP prometheus_remote_storage_string_interner_zero_reference_releases_total The number of times release has been called for strings that are not interned.
+# TYPE prometheus_remote_storage_string_interner_zero_reference_releases_total counter
+prometheus_remote_storage_string_interner_zero_reference_releases_total 0
+# HELP prometheus_template_text_expansion_failures_total The total number of template text expansion failures.
+# TYPE prometheus_template_text_expansion_failures_total counter
+prometheus_template_text_expansion_failures_total 0
+# HELP prometheus_template_text_expansions_total The total number of template text expansions.
+# TYPE prometheus_template_text_expansions_total counter
+prometheus_template_text_expansions_total 0
+# HELP tempo_backend_scheduler_compaction_empty_tenant_cycle_total The number of compaction cycles where no tenant had work available
+# TYPE tempo_backend_scheduler_compaction_empty_tenant_cycle_total counter
+tempo_backend_scheduler_compaction_empty_tenant_cycle_total 1
+# HELP tempo_backend_scheduler_compaction_jobs_created_total Total number of compaction jobs created
+# TYPE tempo_backend_scheduler_compaction_jobs_created_total counter
+tempo_backend_scheduler_compaction_jobs_created_total{tenant="single-tenant"} 2
+# HELP tempo_backend_scheduler_compaction_tenant_empty_job_total The number of times an empty job was received from the priority queue
+# TYPE tempo_backend_scheduler_compaction_tenant_empty_job_total counter
+tempo_backend_scheduler_compaction_tenant_empty_job_total 1
+# HELP tempo_backend_scheduler_compaction_tenant_reset_total The number of times the tenant is changed
+# TYPE tempo_backend_scheduler_compaction_tenant_reset_total counter
+tempo_backend_scheduler_compaction_tenant_reset_total{tenant="single-tenant"} 1
+# HELP tempo_backend_scheduler_job_duration_seconds Duration of of a job in seconds
+# TYPE tempo_backend_scheduler_job_duration_seconds histogram
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="0.005"} 0
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="0.01"} 0
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="0.025"} 0
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="0.05"} 0
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="0.1"} 0
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="0.25"} 0
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="0.5"} 0
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="1"} 1
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="2.5"} 2
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="5"} 2
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="10"} 2
+tempo_backend_scheduler_job_duration_seconds_bucket{job_type="JOB_TYPE_COMPACTION",le="+Inf"} 2
+tempo_backend_scheduler_job_duration_seconds_sum{job_type="JOB_TYPE_COMPACTION"} 2.292182126
+tempo_backend_scheduler_job_duration_seconds_count{job_type="JOB_TYPE_COMPACTION"} 2
+# HELP tempo_backend_scheduler_jobs_active Number of currently active jobs
+# TYPE tempo_backend_scheduler_jobs_active gauge
+tempo_backend_scheduler_jobs_active{job_type="JOB_TYPE_COMPACTION",tenant="single-tenant"} 0
+# HELP tempo_backend_scheduler_jobs_completed_total Total number of jobs completed
+# TYPE tempo_backend_scheduler_jobs_completed_total counter
+tempo_backend_scheduler_jobs_completed_total{job_type="JOB_TYPE_COMPACTION",tenant="single-tenant"} 2
+# HELP tempo_backend_scheduler_jobs_created_total Total number of jobs created
+# TYPE tempo_backend_scheduler_jobs_created_total counter
+tempo_backend_scheduler_jobs_created_total{job_type="JOB_TYPE_COMPACTION",tenant="single-tenant"} 2
+# HELP tempo_backend_scheduler_jobs_not_found_total The number of calls to get a job that were not found
+# TYPE tempo_backend_scheduler_jobs_not_found_total counter
+tempo_backend_scheduler_jobs_not_found_total{worker_id="46061e0000c8"} 14
+# HELP tempo_backend_scheduler_provider_jobs_merged_total The number of jobs merged from providers
+# TYPE tempo_backend_scheduler_provider_jobs_merged_total counter
+tempo_backend_scheduler_provider_jobs_merged_total{id="0"} 2
+# HELP tempo_backend_scheduler_work_cache_file_size_bytes Size of the work cache file in bytes
+# TYPE tempo_backend_scheduler_work_cache_file_size_bytes histogram
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="1024"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="2048"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="4096"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="8192"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="16384"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="32768"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="65536"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="131072"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="262144"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="524288"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="1.048576e+06"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="2.097152e+06"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="4.194304e+06"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="8.388608e+06"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="1.6777216e+07"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="3.3554432e+07"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_bucket{le="+Inf"} 0
+tempo_backend_scheduler_work_cache_file_size_bytes_sum 0
+tempo_backend_scheduler_work_cache_file_size_bytes_count 0
+# HELP tempo_backend_scheduler_work_flushes_failed_total The number of times the work cache flush to backend storage failed
+# TYPE tempo_backend_scheduler_work_flushes_failed_total counter
+tempo_backend_scheduler_work_flushes_failed_total 0
+# HELP tempo_backend_scheduler_work_flushes_total The number of times the work cache was flushed to backend storage
+# TYPE tempo_backend_scheduler_work_flushes_total counter
+tempo_backend_scheduler_work_flushes_total 9
+# HELP tempo_backend_worker_call_retries_total Total number of retries for calls
+# TYPE tempo_backend_worker_call_retries_total counter
+tempo_backend_worker_call_retries_total 14
+# HELP tempo_backend_worker_jobs_total Total number of jobs processed
+# TYPE tempo_backend_worker_jobs_total counter
+tempo_backend_worker_jobs_total 2
+# HELP tempo_block_builder_consume_cycle_duration_seconds Time spent consuming a full cycle.
+# TYPE tempo_block_builder_consume_cycle_duration_seconds histogram
+tempo_block_builder_consume_cycle_duration_seconds_bucket{le="+Inf"} 0
+tempo_block_builder_consume_cycle_duration_seconds_sum 0
+tempo_block_builder_consume_cycle_duration_seconds_count 0
+# HELP tempo_buffer_pool_miss_bytes_total The total number of alloc'ed bytes that missed the sync pools.
+# TYPE tempo_buffer_pool_miss_bytes_total counter
+tempo_buffer_pool_miss_bytes_total{direction="over",name="cache"} 0
+tempo_buffer_pool_miss_bytes_total{direction="over",name="ingester_prealloc"} 0
+tempo_buffer_pool_miss_bytes_total{direction="under",name="cache"} 0
+tempo_buffer_pool_miss_bytes_total{direction="under",name="ingester_prealloc"} 0
+# HELP tempo_build_info A metric with a constant '1' value labeled by version, revision, branch, goversion from which tempo was built, and the goos and goarch for the build.
+# TYPE tempo_build_info gauge
+tempo_build_info{branch="HEAD",goarch="arm64",goos="linux",goversion="go1.26.5",revision="1900ed7bb",tags="unknown",version="v3.0.3"} 1
+# HELP tempo_consul_request_duration_seconds Time spent on consul requests.
+# TYPE tempo_consul_request_duration_seconds histogram
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="0.005"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="0.01"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="0.025"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="0.05"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="0.1"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="0.25"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="0.5"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="1"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="2.5"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="5"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="10"} 340
+tempo_consul_request_duration_seconds_bucket{kv_name="live-store-ring",operation="CAS loop",status_code="200",le="+Inf"} 340
+tempo_consul_request_duration_seconds_sum{kv_name="live-store-ring",operation="CAS loop",status_code="200"} 0.021861745
+tempo_consul_request_duration_seconds_count{kv_name="live-store-ring",operation="CAS loop",status_code="200"} 340
+# HELP tempo_distributor_bytes_received_total The total number of proto bytes received per tenant, after limits
+# TYPE tempo_distributor_bytes_received_total counter
+tempo_distributor_bytes_received_total{tenant="single-tenant"} 3.54779736e+08
+# HELP tempo_distributor_ingress_bytes_total The total number of bytes received per tenant, before limits
+# TYPE tempo_distributor_ingress_bytes_total counter
+tempo_distributor_ingress_bytes_total{tenant="single-tenant"} 3.54779736e+08
+# HELP tempo_distributor_kafka_records_per_request The number of records in each kafka request
+# TYPE tempo_distributor_kafka_records_per_request histogram
+tempo_distributor_kafka_records_per_request_bucket{le="0.005"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="0.01"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="0.025"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="0.05"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="0.1"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="0.25"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="0.5"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="1"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="2.5"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="5"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="10"} 0
+tempo_distributor_kafka_records_per_request_bucket{le="+Inf"} 0
+tempo_distributor_kafka_records_per_request_sum 0
+tempo_distributor_kafka_records_per_request_count 0
+# HELP tempo_distributor_kafka_write_latency_seconds The latency of writing to kafka
+# TYPE tempo_distributor_kafka_write_latency_seconds histogram
+tempo_distributor_kafka_write_latency_seconds_bucket{le="0.005"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="0.01"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="0.025"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="0.05"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="0.1"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="0.25"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="0.5"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="1"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="2.5"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="5"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="10"} 0
+tempo_distributor_kafka_write_latency_seconds_bucket{le="+Inf"} 0
+tempo_distributor_kafka_write_latency_seconds_sum 0
+tempo_distributor_kafka_write_latency_seconds_count 0
+# HELP tempo_distributor_push_duration_seconds Records the amount of time to process and route a batch through the distributor.
+# TYPE tempo_distributor_push_duration_seconds histogram
+tempo_distributor_push_duration_seconds_bucket{le="0.005"} 1246
+tempo_distributor_push_duration_seconds_bucket{le="0.01"} 1363
+tempo_distributor_push_duration_seconds_bucket{le="0.025"} 1390
+tempo_distributor_push_duration_seconds_bucket{le="0.05"} 1391
+tempo_distributor_push_duration_seconds_bucket{le="0.1"} 1391
+tempo_distributor_push_duration_seconds_bucket{le="0.25"} 1391
+tempo_distributor_push_duration_seconds_bucket{le="0.5"} 1391
+tempo_distributor_push_duration_seconds_bucket{le="1"} 1391
+tempo_distributor_push_duration_seconds_bucket{le="2.5"} 1391
+tempo_distributor_push_duration_seconds_bucket{le="5"} 1391
+tempo_distributor_push_duration_seconds_bucket{le="10"} 1391
+tempo_distributor_push_duration_seconds_bucket{le="+Inf"} 1391
+tempo_distributor_push_duration_seconds_sum 4.319939507999988
+tempo_distributor_push_duration_seconds_count 1391
+# HELP tempo_distributor_spans_received_total The total number of spans received per tenant
+# TYPE tempo_distributor_spans_received_total counter
+tempo_distributor_spans_received_total{tenant="single-tenant"} 885084
+# HELP tempo_distributor_traces_per_batch The number of traces in each batch
+# TYPE tempo_distributor_traces_per_batch histogram
+tempo_distributor_traces_per_batch_bucket{le="2"} 0
+tempo_distributor_traces_per_batch_bucket{le="4"} 0
+tempo_distributor_traces_per_batch_bucket{le="8"} 0
+tempo_distributor_traces_per_batch_bucket{le="16"} 0
+tempo_distributor_traces_per_batch_bucket{le="32"} 1
+tempo_distributor_traces_per_batch_bucket{le="64"} 616
+tempo_distributor_traces_per_batch_bucket{le="128"} 617
+tempo_distributor_traces_per_batch_bucket{le="256"} 1289
+tempo_distributor_traces_per_batch_bucket{le="512"} 1391
+tempo_distributor_traces_per_batch_bucket{le="1024"} 1391
+tempo_distributor_traces_per_batch_bucket{le="+Inf"} 1391
+tempo_distributor_traces_per_batch_sum 207932
+tempo_distributor_traces_per_batch_count 1391
+# HELP tempo_dns_failures_total The number of DNS lookup failures
+# TYPE tempo_dns_failures_total counter
+tempo_dns_failures_total{name="memberlist"} 0
+# HELP tempo_dns_lookups_total The number of DNS lookups resolutions attempts
+# TYPE tempo_dns_lookups_total counter
+tempo_dns_lookups_total{name="memberlist"} 0
+# HELP tempo_dropped_log_lines_total The total number of log lines dropped by the rate limited logger.
+# TYPE tempo_dropped_log_lines_total counter
+tempo_dropped_log_lines_total 0
+# HELP tempo_experimental_features_in_use_total The number of experimental features in use.
+# TYPE tempo_experimental_features_in_use_total counter
+tempo_experimental_features_in_use_total 0
+# HELP tempo_grpc_concurrent_streams_limit The max number of concurrent streams that can be accepted (0 means no limit).
+# TYPE tempo_grpc_concurrent_streams_limit gauge
+tempo_grpc_concurrent_streams_limit 100
+# HELP tempo_inflight_requests Current number of inflight requests.
+# TYPE tempo_inflight_requests gauge
+tempo_inflight_requests{method="gRPC",route="/frontend.Frontend/Process"} 20
+tempo_inflight_requests{method="gRPC",route="/tempopb.BackendScheduler/Next"} 0
+tempo_inflight_requests{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob"} 0
+# HELP tempo_kv_request_duration_seconds Time spent on kv store requests.
+# TYPE tempo_kv_request_duration_seconds histogram
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="0.005"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="0.01"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="0.025"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="0.05"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="0.1"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="0.25"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="0.5"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="1"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="2.5"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="5"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="10"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory",le="+Inf"} 1
+tempo_kv_request_duration_seconds_sum{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory"} 1.6792e-05
+tempo_kv_request_duration_seconds_count{kv_name="live-store-ring",operation="GET",role="primary",status_code="200",type="inmemory"} 1
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.005"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.01"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.025"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.05"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.1"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.25"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="0.5"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="1"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="2.5"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="5"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="10"} 113
+tempo_kv_request_duration_seconds_bucket{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory",le="+Inf"} 113
+tempo_kv_request_duration_seconds_sum{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory"} 0.010993083
+tempo_kv_request_duration_seconds_count{kv_name="livestore",operation="CAS",role="primary",status_code="200",type="inmemory"} 113
+# HELP tempo_lifecycler_read_only Set to 1 if this lifecycler's instance entry is in read-only state.
+# TYPE tempo_lifecycler_read_only gauge
+tempo_lifecycler_read_only{name="live-store"} 0
+# HELP tempo_limits_defaults Default resource limits
+# TYPE tempo_limits_defaults gauge
+tempo_limits_defaults{limit_name="block_retention"} 0
+tempo_limits_defaults{limit_name="ingestion_burst_size_bytes"} 3e+07
+tempo_limits_defaults{limit_name="ingestion_rate_limit_bytes"} 3e+07
+tempo_limits_defaults{limit_name="max_blocks_per_tag_values_query"} 0
+tempo_limits_defaults{limit_name="max_bytes_per_tag_values_query"} 1e+06
+tempo_limits_defaults{limit_name="max_bytes_per_trace"} 5e+06
+tempo_limits_defaults{limit_name="max_global_traces_per_user"} 0
+tempo_limits_defaults{limit_name="max_local_traces_per_user"} 10000
+tempo_limits_defaults{limit_name="metrics_generator_max_active_series"} 0
+# HELP tempo_live_store_back_pressure_duration_seconds Duration of backpressure wait per push
+# TYPE tempo_live_store_back_pressure_duration_seconds histogram
+tempo_live_store_back_pressure_duration_seconds_bucket{le="0.005"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="0.01"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="0.025"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="0.05"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="0.1"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="0.25"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="0.5"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="1"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="2.5"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="5"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="10"} 0
+tempo_live_store_back_pressure_duration_seconds_bucket{le="+Inf"} 0
+tempo_live_store_back_pressure_duration_seconds_sum 0
+tempo_live_store_back_pressure_duration_seconds_count 0
+# HELP tempo_live_store_blocks_cleared_total The total number of blocks cleared.
+# TYPE tempo_live_store_blocks_cleared_total counter
+tempo_live_store_blocks_cleared_total{block_type="wal"} 12
+# HELP tempo_live_store_blocks_completed_total The total number of blocks completed
+# TYPE tempo_live_store_blocks_completed_total counter
+tempo_live_store_blocks_completed_total 15
+# HELP tempo_live_store_blocks_cut_total The total number of blocks cut by reason.
+# TYPE tempo_live_store_blocks_cut_total counter
+tempo_live_store_blocks_cut_total{reason="max_block_duration"} 15
+# HELP tempo_live_store_bytes_received_total The total bytes received per tenant.
+# TYPE tempo_live_store_bytes_received_total counter
+tempo_live_store_bytes_received_total{data_type="trace",tenant="single-tenant"} 6.61062038e+08
+# HELP tempo_live_store_catch_up_duration_seconds Time spent catching up at startup
+# TYPE tempo_live_store_catch_up_duration_seconds gauge
+tempo_live_store_catch_up_duration_seconds 0
+# HELP tempo_live_store_complete_queue_length Number of wal blocks waiting for completion
+# TYPE tempo_live_store_complete_queue_length gauge
+tempo_live_store_complete_queue_length 0
+# HELP tempo_live_store_completion_duration_seconds Records the amount of time to complete a block.
+# TYPE tempo_live_store_completion_duration_seconds histogram
+tempo_live_store_completion_duration_seconds_bucket{le="1"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="2"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="4"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="8"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="16"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="32"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="64"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="128"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="256"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="512"} 15
+tempo_live_store_completion_duration_seconds_bucket{le="+Inf"} 15
+tempo_live_store_completion_duration_seconds_sum 8.227976923
+tempo_live_store_completion_duration_seconds_count 15
+# HELP tempo_live_store_completion_failed_retries_total The total number of failed retries after a failed completion
+# TYPE tempo_live_store_completion_failed_retries_total counter
+tempo_live_store_completion_failed_retries_total 0
+# HELP tempo_live_store_completion_retries_total The total number of retries after a failed completion
+# TYPE tempo_live_store_completion_retries_total counter
+tempo_live_store_completion_retries_total 0
+# HELP tempo_live_store_completion_size_bytes Size in bytes of blocks completed.
+# TYPE tempo_live_store_completion_size_bytes histogram
+tempo_live_store_completion_size_bytes_bucket{le="1.048576e+06"} 0
+tempo_live_store_completion_size_bytes_bucket{le="2.097152e+06"} 0
+tempo_live_store_completion_size_bytes_bucket{le="4.194304e+06"} 0
+tempo_live_store_completion_size_bytes_bucket{le="8.388608e+06"} 1
+tempo_live_store_completion_size_bytes_bucket{le="1.6777216e+07"} 15
+tempo_live_store_completion_size_bytes_bucket{le="3.3554432e+07"} 15
+tempo_live_store_completion_size_bytes_bucket{le="6.7108864e+07"} 15
+tempo_live_store_completion_size_bytes_bucket{le="1.34217728e+08"} 15
+tempo_live_store_completion_size_bytes_bucket{le="2.68435456e+08"} 15
+tempo_live_store_completion_size_bytes_bucket{le="5.36870912e+08"} 15
+tempo_live_store_completion_size_bytes_bucket{le="+Inf"} 15
+tempo_live_store_completion_size_bytes_sum 1.59040878e+08
+tempo_live_store_completion_size_bytes_count 15
+# HELP tempo_live_store_failed_completions_total The total number of failed block completions
+# TYPE tempo_live_store_failed_completions_total counter
+tempo_live_store_failed_completions_total 0
+# HELP tempo_live_store_live_trace_bytes The current number of bytes consumed by live traces per tenant.
+# TYPE tempo_live_store_live_trace_bytes gauge
+tempo_live_store_live_trace_bytes{tenant="single-tenant"} 0
+# HELP tempo_live_store_live_traces The current number of live traces per tenant.
+# TYPE tempo_live_store_live_traces gauge
+tempo_live_store_live_traces{tenant="single-tenant"} 0
+# HELP tempo_live_store_local_blocks_flushed_total The total number of local complete blocks flushed
+# TYPE tempo_live_store_local_blocks_flushed_total counter
+tempo_live_store_local_blocks_flushed_total 15
+# HELP tempo_live_store_local_failed_flushes_total The total number of failed local complete block flushes
+# TYPE tempo_live_store_local_failed_flushes_total counter
+tempo_live_store_local_failed_flushes_total 0
+# HELP tempo_live_store_local_flush_duration_seconds Records the amount of time to flush a local complete block.
+# TYPE tempo_live_store_local_flush_duration_seconds histogram
+tempo_live_store_local_flush_duration_seconds_bucket{le="1"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="2"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="4"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="8"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="16"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="32"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="64"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="128"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="256"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="512"} 15
+tempo_live_store_local_flush_duration_seconds_bucket{le="+Inf"} 15
+tempo_live_store_local_flush_duration_seconds_sum 0.11030603999999998
+tempo_live_store_local_flush_duration_seconds_count 15
+# HELP tempo_live_store_local_flush_failed_retries_total The total number of failed retries after a failed local complete block flush
+# TYPE tempo_live_store_local_flush_failed_retries_total counter
+tempo_live_store_local_flush_failed_retries_total 0
+# HELP tempo_live_store_local_flush_retries_total The total number of retries after a failed local complete block flush
+# TYPE tempo_live_store_local_flush_retries_total counter
+tempo_live_store_local_flush_retries_total 0
+# HELP tempo_live_store_local_flush_size_bytes Size in bytes of local complete blocks flushed.
+# TYPE tempo_live_store_local_flush_size_bytes histogram
+tempo_live_store_local_flush_size_bytes_bucket{le="1.048576e+06"} 0
+tempo_live_store_local_flush_size_bytes_bucket{le="2.097152e+06"} 0
+tempo_live_store_local_flush_size_bytes_bucket{le="4.194304e+06"} 0
+tempo_live_store_local_flush_size_bytes_bucket{le="8.388608e+06"} 15
+tempo_live_store_local_flush_size_bytes_bucket{le="1.6777216e+07"} 15
+tempo_live_store_local_flush_size_bytes_bucket{le="3.3554432e+07"} 15
+tempo_live_store_local_flush_size_bytes_bucket{le="6.7108864e+07"} 15
+tempo_live_store_local_flush_size_bytes_bucket{le="1.34217728e+08"} 15
+tempo_live_store_local_flush_size_bytes_bucket{le="2.68435456e+08"} 15
+tempo_live_store_local_flush_size_bytes_bucket{le="5.36870912e+08"} 15
+tempo_live_store_local_flush_size_bytes_bucket{le="+Inf"} 15
+tempo_live_store_local_flush_size_bytes_sum 9.1619229e+07
+tempo_live_store_local_flush_size_bytes_count 15
+# HELP tempo_live_store_ready 1 if ready to serve queries, 0 otherwise
+# TYPE tempo_live_store_ready gauge
+tempo_live_store_ready 1
+# HELP tempo_live_store_traces_created_total The total number of traces created per tenant.
+# TYPE tempo_live_store_traces_created_total counter
+tempo_live_store_traces_created_total{tenant="single-tenant"} 158380
+# HELP tempo_metrics_generator_assigned_partitions Number of Kafka partitions currently assigned to this generator instance.
+# TYPE tempo_metrics_generator_assigned_partitions gauge
+tempo_metrics_generator_assigned_partitions 0
+# HELP tempo_metrics_generator_enqueue_time_seconds_total The total amount of time spent waiting to enqueue for processing
+# TYPE tempo_metrics_generator_enqueue_time_seconds_total counter
+tempo_metrics_generator_enqueue_time_seconds_total 0
+# HELP tempo_overrides_user_configurable_overrides_list_total How often the user-configurable overrides was listed
+# TYPE tempo_overrides_user_configurable_overrides_list_total counter
+tempo_overrides_user_configurable_overrides_list_total 0
+# HELP tempo_overrides_user_configurable_overrides_reload_failed_total How often reloading the user-configurable overrides has failed
+# TYPE tempo_overrides_user_configurable_overrides_reload_failed_total counter
+tempo_overrides_user_configurable_overrides_reload_failed_total 0
+# HELP tempo_partition_ring_lifecycler_reconciles_total Total number of reconciliations started.
+# TYPE tempo_partition_ring_lifecycler_reconciles_total counter
+tempo_partition_ring_lifecycler_reconciles_total{name="livestore-partitions",type="other-partitions"} 113
+tempo_partition_ring_lifecycler_reconciles_total{name="livestore-partitions",type="owned-partition"} 113
+# HELP tempo_partition_ring_partitions Number of partitions by state in the partitions ring.
+# TYPE tempo_partition_ring_partitions gauge
+tempo_partition_ring_partitions{name="livestore-partitions",state="Active"} 1
+tempo_partition_ring_partitions{name="livestore-partitions",state="Inactive"} 0
+tempo_partition_ring_partitions{name="livestore-partitions",state="Pending"} 0
+# HELP tempo_querier_livestore_clients The current number of livestore clients.
+# TYPE tempo_querier_livestore_clients gauge
+tempo_querier_livestore_clients 0
+# HELP tempo_querier_worker_request_executed_total The total number of requests executed by the querier worker.
+# TYPE tempo_querier_worker_request_executed_total counter
+tempo_querier_worker_request_executed_total 0
+# HELP tempo_query_frontend_actual_batch_size Batch size.
+# TYPE tempo_query_frontend_actual_batch_size histogram
+tempo_query_frontend_actual_batch_size_bucket{le="1"} 0
+tempo_query_frontend_actual_batch_size_bucket{le="2.4"} 0
+tempo_query_frontend_actual_batch_size_bucket{le="3.8"} 0
+tempo_query_frontend_actual_batch_size_bucket{le="5.199999999999999"} 0
+tempo_query_frontend_actual_batch_size_bucket{le="6.6"} 0
+tempo_query_frontend_actual_batch_size_bucket{le="+Inf"} 0
+tempo_query_frontend_actual_batch_size_sum 0
+tempo_query_frontend_actual_batch_size_count 0
+# HELP tempo_query_frontend_connected_clients Number of worker clients currently connected to the frontend.
+# TYPE tempo_query_frontend_connected_clients gauge
+tempo_query_frontend_connected_clients 20
+# HELP tempo_query_frontend_queue_duration_seconds Time spend by requests queued.
+# TYPE tempo_query_frontend_queue_duration_seconds histogram
+tempo_query_frontend_queue_duration_seconds_bucket{le="0.005"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="0.01"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="0.025"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="0.05"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="0.1"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="0.25"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="0.5"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="1"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="2.5"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="5"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="10"} 0
+tempo_query_frontend_queue_duration_seconds_bucket{le="+Inf"} 0
+tempo_query_frontend_queue_duration_seconds_sum 0
+tempo_query_frontend_queue_duration_seconds_count 0
+# HELP tempo_query_frontend_retries Number of times a request is retried.
+# TYPE tempo_query_frontend_retries histogram
+tempo_query_frontend_retries_bucket{le="0"} 0
+tempo_query_frontend_retries_bucket{le="1"} 0
+tempo_query_frontend_retries_bucket{le="2"} 0
+tempo_query_frontend_retries_bucket{le="3"} 0
+tempo_query_frontend_retries_bucket{le="4"} 0
+tempo_query_frontend_retries_bucket{le="5"} 0
+tempo_query_frontend_retries_bucket{le="+Inf"} 0
+tempo_query_frontend_retries_sum 0
+tempo_query_frontend_retries_count 0
+# HELP tempo_receiver_accepted_spans Number of spans successfully pushed into the pipeline.
+# TYPE tempo_receiver_accepted_spans counter
+tempo_receiver_accepted_spans{receiver="otlp/otlp_receiver",transport="grpc"} 885084
+# HELP tempo_receiver_refused_spans Number of spans that could not be pushed into the pipeline.
+# TYPE tempo_receiver_refused_spans counter
+tempo_receiver_refused_spans{receiver="otlp/otlp_receiver",transport="grpc"} 0
+# HELP tempo_request_duration_seconds Time (in seconds) spent serving HTTP requests.
+# TYPE tempo_request_duration_seconds histogram
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="0.01"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="0.025"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="0.05"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="0.1"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="0.25"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="0.5"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="1"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="1.5"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="2.5"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="5"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="10"} 0
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="25"} 14
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="50"} 14
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="100"} 14
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false",le="+Inf"} 14
+tempo_request_duration_seconds_sum{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false"} 210.01621505300002
+tempo_request_duration_seconds_count{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="error",ws="false"} 14
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="0.01"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="0.025"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="0.05"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="0.1"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="0.25"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="0.5"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="1"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="1.5"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="2.5"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="5"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="10"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="25"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="50"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="100"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false",le="+Inf"} 2
+tempo_request_duration_seconds_sum{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false"} 0.001999167
+tempo_request_duration_seconds_count{method="gRPC",route="/tempopb.BackendScheduler/Next",status_code="success",ws="false"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="0.01"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="0.025"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="0.05"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="0.1"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="0.25"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="0.5"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="1"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="1.5"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="2.5"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="5"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="10"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="25"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="50"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="100"} 2
+tempo_request_duration_seconds_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false",le="+Inf"} 2
+tempo_request_duration_seconds_sum{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false"} 0.001765792
+tempo_request_duration_seconds_count{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",status_code="success",ws="false"} 2
+# HELP tempo_request_message_bytes Size (in bytes) of messages received in the request.
+# TYPE tempo_request_message_bytes histogram
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="4"} 0
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="16"} 0
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="64"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="256"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="1024"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="4096"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="16384"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="65536"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="262144"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="1.048576e+06"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="4.194304e+06"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="1.6777216e+07"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="6.7108864e+07"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="2.68435456e+08"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="1.073741824e+09"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="+Inf"} 20
+tempo_request_message_bytes_sum{method="gRPC",route="/frontend.Frontend/Process"} 780
+tempo_request_message_bytes_count{method="gRPC",route="/frontend.Frontend/Process"} 20
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="4"} 0
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="16"} 0
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="64"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="256"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="1024"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="4096"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="16384"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="65536"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="262144"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="1.048576e+06"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="4.194304e+06"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="1.6777216e+07"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="6.7108864e+07"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="2.68435456e+08"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="1.073741824e+09"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="+Inf"} 16
+tempo_request_message_bytes_sum{method="gRPC",route="/tempopb.BackendScheduler/Next"} 592
+tempo_request_message_bytes_count{method="gRPC",route="/tempopb.BackendScheduler/Next"} 16
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="4"} 0
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="16"} 0
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="64"} 0
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="256"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="1024"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="4096"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="16384"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="65536"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="262144"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="1.048576e+06"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="4.194304e+06"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="1.6777216e+07"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="6.7108864e+07"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="2.68435456e+08"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="1.073741824e+09"} 2
+tempo_request_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="+Inf"} 2
+tempo_request_message_bytes_sum{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob"} 206
+tempo_request_message_bytes_count{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob"} 2
+# HELP tempo_response_message_bytes Size (in bytes) of messages sent in response.
+# TYPE tempo_response_message_bytes histogram
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="4"} 0
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="16"} 0
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="64"} 0
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="256"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="1024"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="4096"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="16384"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="65536"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="262144"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="1.048576e+06"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="4.194304e+06"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="1.6777216e+07"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="6.7108864e+07"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="2.68435456e+08"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="1.073741824e+09"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/frontend.Frontend/Process",le="+Inf"} 20
+tempo_response_message_bytes_sum{method="gRPC",route="/frontend.Frontend/Process"} 1340
+tempo_response_message_bytes_count{method="gRPC",route="/frontend.Frontend/Process"} 20
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="4"} 0
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="16"} 0
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="64"} 0
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="256"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="1024"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="4096"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="16384"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="65536"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="262144"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="1.048576e+06"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="4.194304e+06"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="1.6777216e+07"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="6.7108864e+07"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="2.68435456e+08"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="1.073741824e+09"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/Next",le="+Inf"} 2
+tempo_response_message_bytes_sum{method="gRPC",route="/tempopb.BackendScheduler/Next"} 433
+tempo_response_message_bytes_count{method="gRPC",route="/tempopb.BackendScheduler/Next"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="4"} 0
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="16"} 0
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="64"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="256"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="1024"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="4096"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="16384"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="65536"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="262144"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="1.048576e+06"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="4.194304e+06"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="1.6777216e+07"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="6.7108864e+07"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="2.68435456e+08"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="1.073741824e+09"} 2
+tempo_response_message_bytes_bucket{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob",le="+Inf"} 2
+tempo_response_message_bytes_sum{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob"} 50
+tempo_response_message_bytes_count{method="gRPC",route="/tempopb.BackendScheduler/UpdateJob"} 2
+# HELP tempo_ring_member_heartbeats_total The total number of heartbeats sent.
+# TYPE tempo_ring_member_heartbeats_total counter
+tempo_ring_member_heartbeats_total{name="live-store"} 112
+# HELP tempo_ring_member_tokens_owned The number of tokens owned in the ring.
+# TYPE tempo_ring_member_tokens_owned gauge
+tempo_ring_member_tokens_owned{name="live-store"} 0
+# HELP tempo_ring_member_tokens_to_own The number of tokens to own in the ring.
+# TYPE tempo_ring_member_tokens_to_own gauge
+tempo_ring_member_tokens_to_own{name="live-store"} 0
+# HELP tempo_ring_members Number of members in the ring
+# TYPE tempo_ring_members gauge
+tempo_ring_members{name="live-store",state="ACTIVE"} 1
+tempo_ring_members{name="live-store",state="JOINING"} 0
+tempo_ring_members{name="live-store",state="LEAVING"} 0
+tempo_ring_members{name="live-store",state="PENDING"} 0
+tempo_ring_members{name="live-store",state="Unhealthy"} 0
+# HELP tempo_ring_oldest_member_timestamp Timestamp of the oldest member in the ring.
+# TYPE tempo_ring_oldest_member_timestamp gauge
+tempo_ring_oldest_member_timestamp{name="live-store",state="ACTIVE"} 1.790662041e+09
+tempo_ring_oldest_member_timestamp{name="live-store",state="JOINING"} 0
+tempo_ring_oldest_member_timestamp{name="live-store",state="LEAVING"} 0
+tempo_ring_oldest_member_timestamp{name="live-store",state="PENDING"} 0
+tempo_ring_oldest_member_timestamp{name="live-store",state="Unhealthy"} 0
+# HELP tempo_ring_tokens_total Number of tokens in the ring
+# TYPE tempo_ring_tokens_total gauge
+tempo_ring_tokens_total{name="live-store"} 0
+# HELP tempo_spans_distance_in_past_seconds The number of seconds in the past of the span end time in relation to the ingestion time.
+# TYPE tempo_spans_distance_in_past_seconds histogram
+tempo_spans_distance_in_past_seconds_bucket{tenant="single-tenant",le="300"} 885084
+tempo_spans_distance_in_past_seconds_bucket{tenant="single-tenant",le="1800"} 885084
+tempo_spans_distance_in_past_seconds_bucket{tenant="single-tenant",le="3600"} 885084
+tempo_spans_distance_in_past_seconds_bucket{tenant="single-tenant",le="+Inf"} 885084
+tempo_spans_distance_in_past_seconds_sum{tenant="single-tenant"} 465263
+tempo_spans_distance_in_past_seconds_count{tenant="single-tenant"} 885084
+# HELP tempo_tcp_connections Current number of accepted TCP connections.
+# TYPE tempo_tcp_connections gauge
+tempo_tcp_connections{protocol="grpc"} 2
+tempo_tcp_connections{protocol="http"} 1
+# HELP tempo_tcp_connections_limit The max number of TCP connections that can be accepted (0 means no limit).
+# TYPE tempo_tcp_connections_limit gauge
+tempo_tcp_connections_limit{protocol="grpc"} 0
+tempo_tcp_connections_limit{protocol="http"} 0
+# HELP tempodb_backend_bytes_total Total number of bytes in the backend
+# TYPE tempodb_backend_bytes_total gauge
+tempodb_backend_bytes_total{status="compacted",tenant="single-tenant"} 0
+tempodb_backend_bytes_total{status="live",tenant="single-tenant"} 4.9487131e+07
+# HELP tempodb_backend_hedged_roundtrips_total Total number of hedged backend requests.
+# TYPE tempodb_backend_hedged_roundtrips_total counter
+tempodb_backend_hedged_roundtrips_total 0
+# HELP tempodb_backend_objects_total Total number of objects (traces) in the backend
+# TYPE tempodb_backend_objects_total gauge
+tempodb_backend_objects_total{status="compacted",tenant="single-tenant"} 0
+tempodb_backend_objects_total{status="live",tenant="single-tenant"} 85899
+# HELP tempodb_blocklist_length Total number of blocks per tenant.
+# TYPE tempodb_blocklist_length gauge
+tempodb_blocklist_length{tenant="single-tenant"} 8
+# HELP tempodb_blocklist_poll_duration_seconds Records the amount of time to poll and update the blocklist.
+# TYPE tempodb_blocklist_poll_duration_seconds histogram
+tempodb_blocklist_poll_duration_seconds_bucket{le="0.005"} 1
+tempodb_blocklist_poll_duration_seconds_bucket{le="0.01"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="0.025"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="0.05"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="0.1"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="0.25"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="0.5"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="1"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="2.5"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="5"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="10"} 2
+tempodb_blocklist_poll_duration_seconds_bucket{le="+Inf"} 2
+tempodb_blocklist_poll_duration_seconds_sum 0.005960249
+tempodb_blocklist_poll_duration_seconds_count 2
+# HELP tempodb_blocklist_tenant_index_age_seconds Age in seconds of the last pulled tenant index.
+# TYPE tempodb_blocklist_tenant_index_age_seconds gauge
+tempodb_blocklist_tenant_index_age_seconds{tenant="single-tenant"} 0
+# HELP tempodb_blocklist_tenant_index_builder A value of 1 indicates this instance of tempodb is building the tenant index.
+# TYPE tempodb_blocklist_tenant_index_builder gauge
+tempodb_blocklist_tenant_index_builder{tenant="single-tenant"} 1
+# HELP tempodb_compaction_blocks_total Total number of blocks compacted.
+# TYPE tempodb_compaction_blocks_total counter
+tempodb_compaction_blocks_total{level="0"} 7
+# HELP tempodb_compaction_bytes_written_total Total number of bytes written to backend during compaction.
+# TYPE tempodb_compaction_bytes_written_total counter
+tempodb_compaction_bytes_written_total{level="0"} 4.2667302e+07
+# HELP tempodb_compaction_errors_total Total number of errors occurring during compaction.
+# TYPE tempodb_compaction_errors_total counter
+tempodb_compaction_errors_total 0
+# HELP tempodb_compaction_outstanding_blocks Number of blocks remaining to be compacted before next maintenance cycle
+# TYPE tempodb_compaction_outstanding_blocks gauge
+tempodb_compaction_outstanding_blocks{tenant="single-tenant"} 0
+# HELP tempodb_retention_deleted_total Total number of blocks deleted.
+# TYPE tempodb_retention_deleted_total counter
+tempodb_retention_deleted_total 0
+# HELP tempodb_retention_duration_seconds Records the amount of time to perform retention tasks.
+# TYPE tempodb_retention_duration_seconds histogram
+tempodb_retention_duration_seconds_bucket{le="0.25"} 0
+tempodb_retention_duration_seconds_bucket{le="0.5"} 0
+tempodb_retention_duration_seconds_bucket{le="1"} 0
+tempodb_retention_duration_seconds_bucket{le="2"} 0
+tempodb_retention_duration_seconds_bucket{le="4"} 0
+tempodb_retention_duration_seconds_bucket{le="8"} 0
+tempodb_retention_duration_seconds_bucket{le="+Inf"} 0
+tempodb_retention_duration_seconds_sum 0
+tempodb_retention_duration_seconds_count 0
+# HELP tempodb_retention_errors_total Total number of times an error occurred while performing retention tasks.
+# TYPE tempodb_retention_errors_total counter
+tempodb_retention_errors_total 0
+# HELP tempodb_retention_marked_for_deletion_total Total number of blocks marked for deletion.
+# TYPE tempodb_retention_marked_for_deletion_total counter
+tempodb_retention_marked_for_deletion_total 0
+# HELP tempodb_work_queue_length Current length of the work queue.
+# TYPE tempodb_work_queue_length gauge
+tempodb_work_queue_length 0
+# HELP tempodb_work_queue_max Maximum number of items in the work queue.
+# TYPE tempodb_work_queue_max gauge
+tempodb_work_queue_max 20000
